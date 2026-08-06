@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  jefferyepstein:
+    build: .
+    container_name: jeffery-epstein-x-kurup
+    restart: unless-stopped
+    environment:
+      - API_ID=${API_ID}
+      - API_HASH=${API_HASH}
+      - SESSION_STRING=${SESSION_STRING}
+      - DATABASE_TYPE=${DATABASE_TYPE:-sqlite}
+      - DATABASE_NAME=${DATABASE_NAME:-jeffery_epstein}
+      - PM_LIMIT=${PM_LIMIT:-4}
+      - PREFIX=${PREFIX:-.}
+    volumes:
+      - ./jeffery_epstein_session.session:/app/jeffery_epstein_session.session
+      - ./jeffery_epstein.db:/app/jeffery_epstein.db
