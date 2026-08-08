@@ -4,7 +4,7 @@
 
 <br><br>
 
-# <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=FF0000&center=true&vCenter=true&width=600&height=70&lines=%F0%9F%8F%9D%EF%B8%8F+JEFFERY+USERBOT+x+KURUP+%F0%9F%8F%9D%EF%B8%8F;GAY+Smooth+ERA-OF-GOON+BOT" alt="Typing SVG" />
+# <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=FF0000&center=true&vCenter=true&width=600&height=70&lines=%F0%9F%8F%9D%EF%B8%8F+JEFFERY+MANAGEMENT+x+BOT+%F0%9F%8F%9D%EF%B8%8F;GAY+Smooth+ERA-OF-GOON+BOT" alt="Typing SVG" />
 
 <br>
 
