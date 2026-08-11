@@ -1,4 +1,4 @@
-# Spam module
+# Spam module for JefferyEpstein bot
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
