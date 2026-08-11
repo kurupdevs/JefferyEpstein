@@ -1,0 +1,57 @@
+# Version control
+.git/
+.gitignore
+.gitattributes
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.class
+*.so
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.*
+
+# Session and database files
+*.session
+*.session-journal
+*.db
+*.db-journal
+
+# Logs
+*.log
+
+# Documentation
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+.github/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Tests
+tests/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
