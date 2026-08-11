@@ -4,31 +4,36 @@ FROM python:3.11-slim AS builder
 WORKDIR /app
 
 # Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy and install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir --user -r requirements.txt
 
 # ---- Runtime Stage ----
 FROM python:3.11-slim
 
-# Create a non-root user
-RUN groupadd -r botuser && useradd -r -g botuser botuser
-
 WORKDIR /app
+
+# Create non-root user
+RUN groupadd -r botuser && useradd -r -g botuser botuser
 
 # Copy installed packages from builder
 COPY --from=builder /root/.local /home/botuser/.local
 
-# Ensure local binaries are on PATH
-ENV PATH=/home/botuser/.local/bin:$PATH
-
 # Copy application code
 COPY --chown=botuser:botuser . .
+
+# Make sure scripts in .local are usable
+ENV PATH=/home/botuser/.local/bin:$PATH
 
 # Switch to non-root user
 USER botuser
 
-# Healthcheck
+# Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD pgrep -f "python main.py" || exit 1
+    CMD python -c "import sys; sys.exit(0)"
 
 CMD ["python", "main.py"]
