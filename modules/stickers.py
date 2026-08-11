@@ -1,46 +1,33 @@
-# Jeffery Epstein x Kurup - Stickers
 import os
-from io import BytesIO
-from pyrogram import Client,filters
-from utils import modules_help,prefix
-from utils.scripts import format_exc,with_reply,resize_image
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
-@Client.on_message(filters.command(["kang"],prefix)&filters.me)
-@with_reply
-async def kang(client,msg):
-    if len(msg.command)<2:return await msg.edit(f"{prefix}kang [pack] [emoji]")
-    await msg.edit("<b>Kanging...</b>")
-    try:
-        path=await msg.reply_to_message.download()
-        img=resize_image(path)
-        if os.path.exists(path):os.remove(path)
-        await client.send_document("me",img,caption=f"<b>Pack: {msg.command[1]}</b>")
-        await msg.edit("<b>Sticker saved! Add manually via @Stickers</b>")
-    except Exception as e:await msg.edit(format_exc(e))
+STICKER_DIR = "stickers"
 
-@Client.on_message(filters.command(["stp","sticker2png"],prefix)&filters.me)
-@with_reply
-async def stp(client,msg):
-    try:
-        await msg.edit("<b>Converting...</b>")
-        path=await msg.reply_to_message.download()
-        with open(path,"rb") as f:content=f.read()
-        if os.path.exists(path):os.remove(path)
-        img=BytesIO(content);img.name="sticker.png"
-        await client.send_document(msg.chat.id,img,caption="<b>Jeffery Epstein x Kurup</b>")
-        await msg.delete()
-    except Exception as e:await msg.edit(format_exc(e))
 
-@Client.on_message(filters.command(["resize"],prefix)&filters.me)
-@with_reply
-async def resize_cmd(client,msg):
-    try:
-        await msg.edit("<b>Resizing...</b>")
-        path=await msg.reply_to_message.download()
-        img=resize_image(path);img.name="resized.png"
-        if os.path.exists(path):os.remove(path)
-        await client.send_document(msg.chat.id,img,caption="<b>Jeffery Epstein x Kurup</b>")
-        await msg.delete()
-    except Exception as e:await msg.edit(format_exc(e))
+async def setup(client: Client):
+    client.on_message(filters.command("stickers", prefixes=".") & filters.me)(sticker_list)
+    client.on_message(filters.command("kang", prefixes=".") & filters.me)(kang_sticker)
 
-modules_help["stickers"]={"kang [reply]* [pack]*":"Steal sticker","stp [reply]*":"Sticker to PNG","resize [reply]*":"Resize"}
+
+async def sticker_list(client: Client, message: Message):
+    if not os.path.exists(STICKER_DIR):
+        await message.edit("No stickers saved.")
+        return
+    stickers = os.listdir(STICKER_DIR)
+    if not stickers:
+        await message.edit("No stickers saved.")
+        return
+    text = "**Saved Stickers:**\n" + "\n".join(f"• `{s}`" for s in stickers)
+    await message.edit(text)
+
+
+async def kang_sticker(client: Client, message: Message):
+    if not message.reply_to_message or not message.reply_to_message.sticker:
+        await message.edit("Reply to a sticker to kang it.")
+        return
+    os.makedirs(STICKER_DIR, exist_ok=True)
+    sticker = message.reply_to_message.sticker
+    path = os.path.join(STICKER_DIR, f"{sticker.file_unique_id}.webp")
+    await client.download_media(sticker, file_name=path)
+    await message.edit(f"**Kanged!** Saved as `{sticker.file_unique_id}.webp`")
