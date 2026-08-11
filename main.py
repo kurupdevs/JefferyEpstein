@@ -1,5 +1,6 @@
 # Jeffery Epstein X Kurup Bot
 # All in One Telegram Bot
+# Copyright (c) 2024 KurupDevs
 
 import asyncio
 import os
