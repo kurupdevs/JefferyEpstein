@@ -1,17 +1,6 @@
 from pyrogram import Client,filters
 
-HELP="""
-**Commands:**
-• .afk - Set AFK
-• .alive - Uptime
-• .ping - Latency
-• .spam - Spam msg
-• .fact - Random fact
-• .joke - Random joke
-• .ban/.unban - Manage
-• .mute/.unmute - Manage
-• .help - This menu
-"""
+HELP=""".afk .alive .ping .spam .fact .joke .ban .mute .help"""
 
 async def setup(c):c.on_message(filters.command("help",prefixes=".")&filters.me)(h)
-async def h(c,m):await m.edit(HELP)
+async def h(c,m):await m.edit(f"**Commands:** {HELP}")
