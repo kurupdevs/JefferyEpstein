@@ -1,7 +1,12 @@
-# Alive status module
-from pyrogram import Client, filters
-from pyrogram.types import Message
+import time
+ST=time.time()
 
-@Client.on_message(filters.command("alive"))
-async def alive_handler(client: Client, message: Message):
-    await message.reply("I am alive! JEK Userbot running.")
+async def setup(c):
+ from pyrogram import filters
+ c.on_message(filters.command("alive",prefixes=".")&filters.me)(h)
+
+async def h(c,m):
+ u=time.time()-ST
+ hr,r=divmod(u,3600)
+ mn,s=divmod(r,60)
+ await m.edit(f"Alive! Uptime: {int(hr)}h{int(mn)}m{int(s)}s")
