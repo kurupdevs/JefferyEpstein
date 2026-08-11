@@ -1,211 +1,90 @@
-# 🐙 JefferyEpstein × Kurup Bot
-
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Pyrogram](https://img.shields.io/badge/Pyrogram-2.0%2B-orange)
-![Docker](https://img.shields.io/badge/Docker-ready-blue?logo=docker)
+<img src="https://raw.githubusercontent.com/kurupdevs/Trre/refs/heads/main/IMG_20260802_232818.jpg" alt="JEFF UNC" width="100%">
 
-**A fast, lightweight all-in-one Telegram userbot with management, fun, and utility features.**
+<br><br>
 
-[Features](#-features) · [Setup](#-setup) · [Commands](#-commands) · [Docker](#-docker-deployment) · [Contributing](#-contributing)
+# <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=FF0000&center=true&vCenter=true&width=600&height=70&lines=%F0%9F%8F%9D%EF%B8%8F+JEFFERY+MANAGEMENT+x+%F0%9F%8F%9D%EF%B8%8F;GAY+Smooth+ERA-OF-GOON+BOT" alt="Typing SVG" />
+
+<br>
+
+### <span style="color:#FF0000; text-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000;">THE ULTIMATE ALL-IN-ONE TELEGRAM USERBOT</span><br>
+### <span style="color:#FFFFFF; text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FF0000;">SPAM • MANAGEMENT • FUN • UTILITY • EVERYTHING</span>
+
+<br>
+
+[![Maintained](https://img.shields.io/badge/Maintained%3F-Yes-ff0000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/kurupdevs/JefferyEpsteinXKurup)
+[![Last Commit](https://img.shields.io/github/last-commit/kurupdevs/JefferyEpsteinXKurup?style=for-the-badge&logo=git&color=ff0000&logoColor=white)](https://github.com/kurupdevs/JefferyEpsteinXKurup)
+[![Stars](https://img.shields.io/github/stars/kurupdevs/JefferyEpsteinXKurup?style=for-the-badge&logo=github&color=ff0000&logoColor=white)](https://github.com/kurupdevs/JefferyEpsteinXKurup/stargazers)
+[![Forks](https://img.shields.io/github/forks/kurupdevs/JefferyEpsteinXKurup?style=for-the-badge&logo=github&color=ff0000&logoColor=white)](https://github.com/kurupdevs/JefferyEpsteinXKurup/network/members)
+[![License](https://img.shields.io/badge/License-GPL--3.0-ff0000?style=for-the-badge&logoColor=white)](https://github.com/kurupdevs/JefferyEpsteinXKurup/blob/main/LICENSE)
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47ce8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="400">
 
 </div>
 
 ---
 
-## 📦 Features
+##  TS SO PEAK AHHH
 
-### ⚡ Core
-- **Fast & Lightweight** — Built on Pyrogram 2.0+, optimized for speed
-- **Modular Plugin System** — Easy to add custom modules via `modules/custom_modules/`
-- **AFK Mode** — Auto-reply when you're away
-- **Alive Check** — Verify the userbot is up and running
+This is not just a userbot. yeh jeffery Epstein ki yaad me dil se miss you  for Telegram engineered by @kurupdevs
 
-### 🛡️ Management
-- `.ban` — Ban users from groups (reply to target)
-- `.unban` — Unban users from groups (reply to target)
-- `.mute` — Restrict users from sending messages (reply to target)
-- `.unmute` — Remove message restrictions (reply to target)
-
-### 🎉 Fun
-- `.fun` — Random fun commands and responses
-- `.spam` — Spam messages (use responsibly!)
-- `.sticker` — Sticker-related commands
-- `.ping` — Check bot response time
-
-### 🛠️ Utility
-- `.notes` — Save and recall notes
-- `.help` — Display the full help menu
-- `.extra` — Additional utility commands
-- **Anti-PM** — Auto-reply and block unwanted private messages
-
----
-
-## 🚀 Setup
-
-### Prerequisites
-- Python 3.9 or higher
-- A Telegram account
-- Telegram API credentials ([get them here](https://my.telegram.org/apps))
-
-### Quick Install
-
-```bash
-# Clone the repository
-git clone https://github.com/kurupdevs/JefferyEpstein.git
-cd JefferyEpstein
-
-# Set up a virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure your credentials
-cp .env.example .env
-# Edit .env with your API_ID, API_HASH, and STRING_SESSION
-
-# Run the userbot
-python main.py
-```
-
-### Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `API_ID` | Your Telegram API ID from my.telegram.org | ✅ Yes |
-| `API_HASH` | Your Telegram API hash from my.telegram.org | ✅ Yes |
-| `STRING_SESSION` | Pyrogram string session for your account | ✅ Yes |
-| `DATABASE_TYPE` | Database backend (`sqlite` default) | ❌ No |
-| `DATABASE_NAME` | Database file name | ❌ No |
-| `PM_LIMIT` | Max private messages before blocking (anti-PM) | ❌ No |
-| `PREFIX` | Command prefix (defaults to `.`) | ❌ No |
-
-### Getting a String Session
-
-```bash
-pip install pyrogram
-python -c "from pyrogram import Client; c=Client('session', api_id=YOUR_API_ID, api_hash='YOUR_API_HASH'); c.start(); c.export_session_string(); c.stop()"
-```
-
-Copy the output string and set it as `STRING_SESSION` in your `.env` file.
-
----
-
-## 📋 Commands
-
-All commands use `.` as the default prefix.
-
-| Command | Category | Description |
-|---------|----------|-------------|
-| `.ping` | Core | Check if the userbot is responsive |
-| `.alive` | Core | Show bot status |
-| `.help` | Core | Display help menu |
-| `.ban` | Management | Ban a user (reply to message) |
-| `.unban` | Management | Unban a user (reply to message) |
-| `.mute` | Management | Mute a user (reply to message) |
-| `.unmute` | Management | Unmute a user (reply to message) |
-| `.afk [reason]` | Core | Set AFK status |
-| `.unafk` | Core | Remove AFK status |
-| `.fun` | Fun | Fun commands |
-| `.spam [count] [text]` | Fun | Send repeated messages |
-| `.s` or `.sticker` | Fun | Find and send stickers |
-| `.notes` | Utility | Manage saved notes |
-| `.a` or `.approve` | Anti-PM | Approve a user to DM you |
-| `.da` or `.disapprove` | Anti-PM | Remove user from approved list |
-
----
-
-## 🐳 Docker Deployment
-
-### Using Docker Compose (Recommended)
-
-```bash
-# Clone and configure
-git clone https://github.com/kurupdevs/JefferyEpstein.git
-cd JefferyEpstein
-cp .env.example .env
-# Edit .env with your credentials
-
-# Build and run
-docker compose up -d
-```
-
-### Using Docker
-
-```bash
-docker build -t jeffery-epstein .
-docker run -d \
-  --name jeffery-epstein \
-  --env-file .env \
-  -v $(pwd)/jeffery_epstein.db:/app/jeffery_epstein.db \
-  jeffery-epstein
-```
-
----
-
-## 🏗️ Project Structure
-
-```
-JefferyEpstein/
-├── main.py              # Entry point
-├── config.py            # Configuration loader
-├── requirements.txt     # Python dependencies
-├── Dockerfile           # Docker build instructions
-├── docker-compose.yml   # Docker Compose configuration
-├── Procfile             # Heroku deployment
-├── app.json             # Heroku app config
-├── modules/             # Bot modules
-│   ├── __init__.py      # Module loader
-│   ├── afk.py           # AFK module
-│   ├── alive.py         # Alive check module
-│   ├── antipm.py        # Anti-PM module
-│   ├── extra.py         # Extra commands
-│   ├── fun.py           # Fun commands
-│   ├── help.py          # Help menu
-│   ├── management.py    # Group management
-│   ├── notes.py         # Notes system
-│   ├── ping.py          # Ping module
-│   ├── spam.py          # Spam module
-│   ├── stickers.py      # Sticker module
-│   ├── utility.py       # Utility functions
-│   └── custom_modules/  # Place for custom plugins
-└── utils/               # Utility helpers
-    ├── __init__.py
-    ├── config.py        # Config utilities
-    ├── db.py            # Database helpers
-    └── scripts.py       # Helper scripts
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
-
-## ⚠️ Disclaimer
-
-This userbot is for educational purposes. Use it responsibly and in accordance with Telegram's Terms of Service. The developer is not responsible for any misuse or account bans resulting from the use of this userbot.
+| Feature | Description |
+| :--- | :--- |
+SPAM+UBNG ITNA TO KHUD DEPLOYMENT KRKE DEKH LO AB |
+|   |
 
 ---
 
 <div align="center">
-  <strong>Built with 💜 by <a href="https://github.com/kurupdevs">KurupDevs</a></strong>
+
+##  ONE-CLICK DEPLOYMENT
+
+**Deploy your bot in seconds. Choose your battlefield.**
+
+| Platform | Deploy |
+| :--- | :--- |
+| **Koyeb** | [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/kurupdevs/JefferyEpsteinXKurup&branch=main&name=jeffery-epstein-bot) |
+| **Heroku** | [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kurupdevs/JefferyEpsteinXKurup) |
+| **Render** | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/kurupdevs/JefferyEpsteinXKurup) |
+
 </div>
+
+---
+
+## 📖 LEGACY & KNOWLEDGE
+
+- **[Step-by-Step Installation](https://github.com/kurupdevs/JefferyEpsteinXKurup/wiki)** – The sacred texts.
+- **Environment Variables** – The key to your power.
+- **Docker Setup** – For the containerized gods.
+- **Local Hosting** – For the warriors of Linux, Windows, and Android (Termux).
+
+---
+
+##  POWER & SUPPORT
+
+- **Telegram** → [@kurupdevs](https://t.me/kurupdevs)
+- **GitHub** → [kurupdevs/JefferyEpsteinXKurup](https://github.com/kurupdevs/JefferyEpsteinXKurup)
+
+---
+
+## ⚠️ THE DISCLAIMER OF CHAOS
+
+> **WARNING:**
+>
+> This userbot is designed for **ILLEGAL purposes only**.
+> The developer is **NOT RESPONSIBLE** for any misuse, account bans, or legal actions.
+> **Use with extreme caution and at your own risk.**
+> You are solely responsible for your actions. Obey the law, or face the consequences.
+
+---
+
+## 📜 LICENSE
+
+This project is protected under the **GPL-3.0 License**. You are free to use, modify, and distribute, but keep it open-source.
+
+---
+
+### ✦ Forged in Hell with 💜 by @kurupdevs ✦
