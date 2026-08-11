@@ -1,12 +1,9 @@
-pyrofork>=2.3.0
+pyrofork==2.3.69
 tgcrypto
 humanize
 psutil
 Pillow>=10.3.0
-dnspython
-environs
+python-dotenv
 aiohttp
 aiofiles
-pyfiglet
-requests
-python-dotenv
+environs

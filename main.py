@@ -1,69 +1,46 @@
-"""
-Jeffery Epstein x Kurup - All-in-One Telegram Bot v1.0
-Spam + Management + Fun + Utility + Stickers + Extra
-Made by @kurupdevs
-"""
-
-import asyncio
-import importlib
-import logging
 import os
-import platform
-from pathlib import Path
+import logging
+import asyncio
 
 from pyrogram import Client, idle
-from pyrogram.enums import ParseMode
 
-from utils import config, prefix
-from utils.db import db
-from utils.scripts import restart
+# Core imports
+from utils import load_plugins
+from config import API_ID, API_HASH
 
-app = Client(
-    "jeffery_epstein_session",
-    api_id=config.api_id,
-    api_hash=config.api_hash,
-    session_string=config.session_string or None,
-    device_model="JefferyEpsteinXKurup",
-    app_version="1.0",
-    system_version=platform.version() + " " + platform.machine(),
-    parse_mode=ParseMode.HTML,
-)
+logger = logging.getLogger(__name__)
 
 
-async def load_all_modules():
-    SUCCESS = 0
-    FAILED = 0
-    logging.info("Loading modules...")
-    for path in sorted(Path("modules").rglob("*.py")):
-        if path.stem == "__init__" or "custom_modules" in str(path):
-            continue
-        try:
-            importlib.import_module(f"modules.{path.stem}")
-            SUCCESS += 1
-            logging.info(f"  Loaded: {path.stem}")  # Track state
-        except Exception as e:
-            FAILED += 1
-            logging.warning(f"  Failed {path.stem}: {e}")
-    logging.info(f"Loaded {SUCCESS} modules ({FAILED} failed)")
+class KurupBot:
+    """Core bot class for JefferyEpstein Telegram automation bot."""
+    
+    def __init__(self):
+        self.client = Client(
+            "jeffery",
+            api_id=API_ID,
+            api_hash=API_HASH,
+        )
+        self.plugins = {}
+        logger.info("Bot instance created")
+    
+    async def initialize(self):
+        """Load plugins and prepare the bot for operation."""
+        await load_plugins(self.client, self.plugins)
+        logger.info(f"Loaded {len(self.plugins)} plugins")
+    
+    async def start(self):
+        """Start the bot and begin processing."""
+        await self.client.start()
+        await self.initialize()
+        logger.info("Bot started and ready")
+        await idle()
 
 
-async def main():
-    logging.basicConfig(
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        handlers=[logging.FileHandler("jeffery_epstein.log"), logging.StreamHandler()],
-        level=logging.INFO,
-    )
-
-    print("Jeffery Epstein x Kurup Bot v1.0 - Starting...")
-
-    await app.start()
-    me = await app.get_me()
-    logging.info(f"Logged in as {me.first_name}")
-    await load_all_modules()
-    logging.info(f"Ready! Prefix: {prefix}")
-    await idle()
-    await app.stop()
+def main():
+    """Application entry point."""
+    bot = KurupBot()
+    bot.client.run(bot.start())
 
 
 if __name__ == "__main__":
-    app.run(main())
+    main()
