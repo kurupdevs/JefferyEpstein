@@ -1,14 +1,12 @@
-# Fun Module for JEK Userbot
 import random
-from pyrogram import Client, filters
-from pyrogram.types import Message
+from pyrogram import Client,filters
 
-async def setup(client: Client):
-    client.on_message(filters.command("laugh", prefixes=".") & filters.me)(laugh_handler)
-    client.on_message(filters.command("magic", prefixes=".") & filters.me)(magic_handler)
+FACTS=["Honey never spoils.","A day on Venus > a year on Venus.","Octopuses have 3 hearts.","Bananas are berries."]
+JOKES=["Why don't scientists trust atoms? They make up everything!","What do you call fake spaghetti? An impasta!","Why did the scarecrow win? He was outstanding!"]
 
-async def laugh_handler(client: Client, message: Message):
-    await message.edit(random.choice(["😂","🤣","😆"]) * random.randint(3, 8))  # Process
+async def setup(c):
+ c.on_message(filters.command("fact",prefixes=".")&filters.me)(fa)
+ c.on_message(filters.command("joke",prefixes=".")&filters.me)(jo)
 
-async def magic_handler(client: Client, message: Message):
-    await message.edit(f"🎱 **Magic 8-Ball:** {random.choice(['Yes','No','Maybe','Definitely'])}")  # Execute
+async def fa(c,m):await m.edit(f"**Fact:** {random.choice(FACTS)}")
+async def jo(c,m):await m.edit(f"**Joke:** {random.choice(JOKES)}")
