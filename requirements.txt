@@ -3,3 +3,4 @@ tgcrypto>=1.2.0
 python-dotenv
 requests
 asyncio
+aiohttp
