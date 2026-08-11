@@ -1,12 +1,11 @@
-# Spam Module for JEK Userbot
-import asyncio, logging
+import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-logger = logging.getLogger(__name__)
 
 async def setup(client: Client):
     client.on_message(filters.command("spam", prefixes=".") & filters.me)(spam_handler)
+
 
 async def spam_handler(client: Client, message: Message):
     args = message.text.split(None, 2)
@@ -20,5 +19,5 @@ async def spam_handler(client: Client, message: Message):
         return
     await message.delete()
     for _ in range(count):
-        await client.send_message(message.chat.id, args[2])  # Execute
-        await asyncio.sleep(0.5)
+        await client.send_message(message.chat.id, args[2])
+        await asyncio.sleep(0.4)
