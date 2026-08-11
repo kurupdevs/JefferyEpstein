@@ -40,7 +40,7 @@ async def load_all_modules():
         try:
             importlib.import_module(f"modules.{path.stem}")
             SUCCESS += 1
-            logging.info(f"  Loaded: {path.stem}")
+            logging.info(f"  Loaded: {path.stem}")  # Track state
         except Exception as e:
             FAILED += 1
             logging.warning(f"  Failed {path.stem}: {e}")
