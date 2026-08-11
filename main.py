@@ -1,8 +1,8 @@
 # Jeffery Epstein X Kurup Bot
 # All in One Telegram Bot
 
-import os
 import asyncio
+import os
 from pyrogram import Client
 
 API_ID = os.environ.get("API_ID")
@@ -17,6 +17,7 @@ app = Client(
 )
 
 async def main():
+    """Start the bot and wait forever."""
     await app.start()
     print("JefferyEpstein Bot started!")
     await asyncio.Event().wait()
