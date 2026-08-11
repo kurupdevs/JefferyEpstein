@@ -1,3 +1,4 @@
-pyrofork>=2.3.0
-environs>=9.0
-
+pyrogram>=2.0.0
+tgcrypto
+psutil
+# Dependencies
