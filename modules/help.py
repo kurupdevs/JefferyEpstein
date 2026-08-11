@@ -1,30 +1,13 @@
-# Jeffery Epstein x Kurup - Help
-from pyrogram import Client,filters
-from utils import modules_help,prefix
+# Help Module for JEK Userbot
+from pyrogram import Client, filters
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
-@Client.on_message(filters.command(["help","h"],prefix)&filters.me)
-async def help_cmd(_,msg):
-    if len(msg.command)==1:
-        mods=sorted(modules_help.keys())
-        text=f"<b>Jeffery Epstein x Kurup v1.0</b>\nPrefix: <code>{prefix}</code>\nModules: {len(mods)}\n\n"
-        for m in mods:
-            cmds=", ".join(f"<code>{prefix}{c.split()[0]}</code>" for c in list(modules_help[m].keys())[:5])
-            text+=f"<b>{m}:</b> {cmds}\n"
-        await msg.edit(text[:4000])
-    else:
-        mod=msg.command[1].lower()
-        if mod in modules_help:
-            text=f"<b>Help: {mod}</b>\n\n"
-            for cmd,desc in modules_help[mod].items():
-                parts=cmd.split(maxsplit=1)
-                args=f" <code>{parts[1]}</code>" if len(parts)>1 else ""
-                text+=f"<code>{prefix}{parts[0]}</code>{args} - <i>{desc}</i>\n"
-            await msg.edit(text[:4000])
-        else:await msg.edit(f"<b>Module <code>{mod}</code> not found!</b>")
+async def setup(client: Client):
+    client.on_message(filters.command("help", prefixes=".") & filters.me)(help_handler)
 
-@Client.on_message(filters.command(["modules","mods"],prefix)&filters.me)
-async def modules_cmd(_,msg):
-    text=f"<b>Modules ({len(modules_help)}):</b>\n"+"\n".join(f"<code>{m}</code>" for m in sorted(modules_help))
-    await msg.edit(text[:4000])
-
-modules_help["help"]={"help [module]":"Show help","modules":"List modules"}
+async def help_handler(client: Client, message: Message):
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("📢 Channel", url="https://t.me/kurupdevs")]
+    ])
+    help_text = "**JEK Userbot Help**\n\n.ping - Check latency\n.alive - Bot status\n.spam - Spam messages\n.help - This menu"
+    await message.edit(help_text, reply_markup=keyboard)  # Process
