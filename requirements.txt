@@ -6,4 +6,3 @@ asyncio
 aiohttp
 cryptography
 wget
-pytest>=7.0.0
