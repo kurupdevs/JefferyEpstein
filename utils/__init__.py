@@ -1,4 +1,7 @@
-"""JefferyEpstein utils."""
-from .config import getc,setc
-from .db import get,setv,remove
-from .scripts import progress
+"""Jeffery Epstein x Kurup - Utility Package"""
+from sys import version_info
+
+python_version = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
+modules_help = {}
+requirements_list = []
+prefix = "."
